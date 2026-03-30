@@ -9,6 +9,7 @@ env/
 
 # 数据与运行输出（勿提交大文件）
 *.xlsx
+!山东-全年-带时间点.xlsx
 *.xls
 *.parquet
 outputs_da_price/
