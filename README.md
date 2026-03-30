@@ -31,6 +31,23 @@ pip install -r requirements.txt
 
 GPU 训练请从 [PyTorch 官网](https://pytorch.org/) 安装与 CUDA 匹配的 `torch`。
 
+### macOS：LightGBM 报 `libomp.dylib` 找不到
+
+PyPI 上的 **macOS 预编译 wheel** 会动态链接 OpenMP。任选其一：
+
+1. **安装 OpenMP 运行时（推荐，多线程性能更好）**  
+   先更新 Homebrew（过旧的 core 可能没有新版 bottle），再安装：
+   ```bash
+   brew update && brew install libomp
+   ```
+2. **不装 libomp：从源码编译并关闭 OpenMP**（训练可能略慢，但不依赖系统 libomp；本仓库已在 arm64 + macOS 14 上验证可行）：
+   ```bash
+   pip install cmake ninja
+   pip uninstall -y lightgbm
+   CMAKE_ARGS="-DUSE_OPENMP=OFF" pip install --no-cache-dir --no-binary lightgbm "lightgbm>=4.0,<5"
+   ```
+   若已按 `requirements.txt` 装过 wheel，需先执行上面的 `uninstall` 再重装。
+
 ---
 
 ## 快速命令
