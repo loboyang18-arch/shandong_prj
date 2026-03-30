@@ -1,0 +1,27 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.Python
+.venv/
+venv/
+env/
+
+# 数据与运行输出（勿提交大文件）
+*.xlsx
+*.xls
+*.parquet
+outputs_da_price/
+outputs_rt_patchtst/
+outputs_rt_onefile/
+outputs_exog_rt6h/
+outputs_exog_accuracy/
+audit_outputs/
+
+# IDE / 工具
+.cursor/
+.idea/
+*.swp
+.DS_Store
+
+.vscode/
